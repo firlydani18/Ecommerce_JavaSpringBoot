@@ -1,6 +1,7 @@
 package com.firly.store.modal;
 
 
+import com.firly.store.domain.OrderStatus;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -11,43 +12,44 @@ import java.util.List;
 @Table(name = "orders")
 public class Order {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
-    @Column(name="order_id")
-    private String orderId;
-  
-    @ManyToOne
-    private User user;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<OrderItem> orderItems = new ArrayList<>();
+	@Column(name="order_id")
+	private String orderId;
 
-    private LocalDateTime orderDate;
+	@ManyToOne
+	private User user;
 
-    private LocalDateTime deliveryDate;
+	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<OrderItem> orderItems = new ArrayList<>();
 
-    @OneToOne
-    private Address shippingAddress;
+	private LocalDateTime orderDate;
 
-    @Embedded
-    private PaymentDetails paymentDetails=new PaymentDetails();
+	private LocalDateTime deliveryDate;
 
-    private double totalPrice;
-    
-    private Integer totalDiscountedPrice;
-    
-    private Integer discounte;
+	@OneToOne
+	private Address shippingAddress;
 
-    // private OrderStatus orderStatus;
-    
-    private int totalItem;
-    
-    private LocalDateTime createdAt;
+	@Embedded
+	private PaymentDetails paymentDetails=new PaymentDetails();
 
-    public Order() {
-		
+	private double totalPrice;
+
+	private Integer totalDiscountedPrice;
+
+	private Integer discounte;
+
+	private OrderStatus orderStatus;
+
+	private int totalItem;
+
+	private LocalDateTime createdAt;
+
+	public Order() {
+
 	}
 
 	public LocalDateTime getCreatedAt() {
@@ -146,13 +148,13 @@ public class Order {
 		this.totalPrice = totalPrice;
 	}
 
-//	public OrderStatus getOrderStatus() {
-//		return orderStatus;
-//	}
-//
-//	public void setOrderStatus(OrderStatus orderStatus) {
-//		this.orderStatus = orderStatus;
-//	}
+	public OrderStatus getOrderStatus() {
+		return orderStatus;
+	}
+
+	public void setOrderStatus(OrderStatus orderStatus) {
+		this.orderStatus = orderStatus;
+	}
 
 	public String getOrderId() {
 		return orderId;
@@ -162,7 +164,7 @@ public class Order {
 		this.orderId = orderId;
 	}
 
-    // constructors, getters and setters
-    
-    
+	// constructors, getters and setters
+
+
 }

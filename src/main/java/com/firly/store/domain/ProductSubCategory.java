@@ -2,12 +2,8 @@ package com.firly.store.domain;
 
 public enum ProductSubCategory {
 	
-	SHIRT,
-	TSHIRT,
-	SHOES,
-	PAINT,
-	SAREE,
-	KURTA,
-	WATCH
-
+	OVAL,
+	SQUARE,
+	CUTTING,
+	DIAMOND
 }
